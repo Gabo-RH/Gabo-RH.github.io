@@ -137,8 +137,6 @@ function startBattle(symbol, x, y) {
 function chooseBattleAction(action, enemy, x, y) {
     const log = document.getElementById("log");
     const menu = document.getElementById("battleMenu");
-    const playerHealthBar = document.getElementById("playerHealthBar");
-    const enemyHealthBar = document.getElementById("enemyHealthBar");
 
     switch (action) {
         case "fight":
@@ -149,9 +147,9 @@ function chooseBattleAction(action, enemy, x, y) {
 
             if (enemy.health <= 0) {
                 log.innerText += `\n🎉 You defeated the ${enemy.name}!`;
-                dungeon[y][x] = ".";  // Remove enemy from dungeon
-                menu.style.display = "none";  // Hide battle menu
-                renderDungeon(dungeon, player);  // Update dungeon
+                dungeon[y][x] = "."; // Remove enemy from dungeon
+                menu.style.display = "none"; // Hide battle menu
+                renderDungeon(dungeon, player); // Update dungeon
                 return;
             }
 
@@ -162,13 +160,14 @@ function chooseBattleAction(action, enemy, x, y) {
 
             if (player.health <= 0) {
                 log.innerText += `\n☠️ You died!`;
-                menu.style.display = "none";  // Hide battle menu
+                menu.style.display = "none"; // Hide battle menu
+                showGameOverScreen(); // Show "You died" screen
             }
             break;
 
         case "run":
             log.innerText = `🏃 You escaped from ${enemy.name}!`;
-            menu.style.display = "none";  // Hide battle menu
+            menu.style.display = "none"; // Hide battle menu
             break;
 
         case "inspect":
@@ -192,6 +191,39 @@ function updateHealthBars(player, enemy) {
     enemyHealthBar.style.width = `${(enemy.health / 10) * 100}%`;
 
 
+}
+
+function showGameOverScreen() {
+    const body = document.body;
+    const gameOverOverlay = document.createElement("div");
+    gameOverOverlay.id = "gameOverOverlay";
+    gameOverOverlay.style.position = "fixed";
+    gameOverOverlay.style.top = "0";
+    gameOverOverlay.style.left = "0";
+    gameOverOverlay.style.width = "100%";
+    gameOverOverlay.style.height = "100%";
+    gameOverOverlay.style.background = "rgba(0, 0, 0, 0.95)";
+    gameOverOverlay.style.color = "#f4e1c1";
+    gameOverOverlay.style.display = "flex";
+    gameOverOverlay.style.flexDirection = "column";
+    gameOverOverlay.style.justifyContent = "center";
+    gameOverOverlay.style.alignItems = "center";
+    gameOverOverlay.style.zIndex = "3000";
+
+    gameOverOverlay.innerHTML = `
+        <h1 style="font-size: 3em; text-shadow: 0 0 10px red;">You Died</h1>
+        <p style="font-size: 1.2em; margin: 20px;">Wanna try again?</p>
+        <button id="retryButton" style="padding: 10px 30px; font-size: 1.2em; background: #4caf50;
+            color: #111; border: none; border-radius: 8px; cursor: pointer;">Retry</button>
+    `;
+
+    body.appendChild(gameOverOverlay);
+
+    const retryButton = document.getElementById("retryButton");
+    retryButton.addEventListener("click", () => {
+        body.removeChild(gameOverOverlay);
+        startGame(); // Restart the game
+    });
 }
 
 document.getElementById("startButton").addEventListener("click", startGame);

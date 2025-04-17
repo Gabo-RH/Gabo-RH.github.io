@@ -199,3 +199,77 @@ h1 {
     font-size: 18px;
     color: white;
 }
+
+/* Responsive Dungeon Container */
+@media (max-width: 768px) {
+    .dungeon-container {
+        grid-template-columns: repeat(5, 40px); /* Adjust grid for smaller screens */
+    }
+
+    .tile {
+        width: 30px;
+        height: 30px;
+        font-size: 12px;
+    }
+}
+
+/* Responsive Battle Menu */
+@media (max-width: 768px) {
+    #battleMenu {
+        width: 90%;
+        padding: 10px;
+    }
+
+    #battleMenu button {
+        font-size: 14px;
+        padding: 8px;
+    }
+}
+
+/* Responsive Start Overlay */
+@media (max-width: 768px) {
+    #startOverlay h1 {
+        font-size: 2.5em;
+    }
+
+    #startOverlay p {
+        font-size: 1em;
+    }
+
+    #startOverlay button {
+        font-size: 1em;
+        padding: 8px 20px;
+    }
+}
+
+/* Responsive Logger */
+@media (max-width: 768px) {
+    #logger {
+        font-size: 14px;
+    }
+}
+
+/* Game Over Overlay */
+#gameOverOverlay h1 {
+    font-size: 4em;
+    text-shadow: 0 0 10px red;
+}
+
+#gameOverOverlay p {
+    font-size: 1.2em;
+    margin: 20px;
+}
+
+#gameOverOverlay button {
+    padding: 10px 30px;
+    font-size: 1.2em;
+    background: #4caf50;
+    color: #111;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+#gameOverOverlay button:hover {
+    background: #45a049;
+}
