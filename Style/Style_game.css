@@ -1,0 +1,201 @@
+/* General Styles */
+body {
+    font-family: 'Garamond', serif;
+    background-color: #333;
+    color: #f4e1c1;
+    text-align: center;
+}
+
+h1 {
+    font-size: 36px;
+    text-shadow: 2px 2px #000;
+}
+
+.dungeon-container {
+    display: grid;
+    grid-template-columns: repeat(10, 40px);
+    gap: 2px;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.tile {
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-weight: bold;
+    border: 2px solid #f4e1c1;
+}
+
+/* Specific Tile Styles */
+.floor {
+    background-color: black;
+}
+
+.enemy {
+    background-color: red;
+    color: white;
+}
+
+.player {
+    background-color: blue;
+    color: white;
+}
+
+.ladder {
+    background-color: gray;
+    color: goldenrod;
+}
+
+
+
+/* Custom Enemy Colors */
+.tile.g {
+    background-color: seagreen;
+    color: white;  /* Goblin */
+}
+
+.tile.GC {
+    background-color: seagreen;
+    color: white;  /* Goblin with Club */
+}
+
+.tile.WB {
+    background-color: grey;
+    color: white;  /* Beta Wolf */
+}
+
+/* Battle Menu */
+#battleMenu {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 20px;
+    background-color: #333;
+    color: #f4e1c1;
+    border: 2px solid #f4e1c1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px;
+    display: none; /* Hidden by default */
+}
+
+#battleMenu button {
+    margin: 5px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#battleMenu button:hover {
+    background-color: #45a049;
+}
+
+/* Log Styling */
+#logger {
+    margin-top: 20px;
+    font-size: 18px;
+    color: white;
+    text-align: center;
+}
+
+/* Start Overlay Styles */
+#startOverlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: white;
+}
+
+#startOverlay button {
+    padding: 15px 30px;
+    font-size: 20px;
+    background-color: #4CAF50;
+    border: none;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+#startOverlay button:hover {
+    background-color: #45a049;
+}
+#battleMenu {
+    position: absolute;
+    top: 20%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding: 20px;
+    background-color: #333;
+    color: #f4e1c1;
+    border: 2px solid #f4e1c1;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    width: 300px;
+    border-radius: 8px;
+}
+
+#battleMenu h2 {
+    margin-bottom: 20px;
+}
+
+#healthBars {
+    margin-bottom: 20px;
+}
+
+.health-bar {
+    width: 100%;
+    height: 20px;
+    background-color: green;
+    margin: 5px 0;
+    border-radius: 5px;
+    position: relative;
+}
+
+.health-bar:before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    border-radius: 5px;
+    transition: width 0.5s;
+}
+
+#playerHealthBar:before {
+    background-color: #4CAF50; /* Green for player */
+}
+
+#enemyHealthBar:before {
+    background-color: #f44336; /* Red for enemy */
+}
+
+#battleActions button {
+    margin: 5px;
+    padding: 10px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    cursor: pointer;
+}
+
+#battleActions button:hover {
+    background-color: #45a049;
+}
+
+#log {
+    margin-top: 20px;
+    font-size: 18px;
+    color: white;
+}
